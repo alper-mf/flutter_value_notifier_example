@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_callback/value_notifiers.dart';
+
+//Import ValueModel
+import 'package:flutter_callback/value_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,8 +32,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //Create Function
   void _incrementCounter() {
-    buttonClickedTimes.value = buttonClickedTimes.value + 1;
+    ValueModel.buttonClickedTimes.value =
+        ValueModel.buttonClickedTimes.value + 1;
   }
 
   @override
@@ -47,8 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
+
+            //Add ValueListanebleBuilder for listen buttonClickedTimes in ValueModel
             ValueListenableBuilder(
-                valueListenable: buttonClickedTimes,
+                valueListenable: ValueModel.buttonClickedTimes,
                 builder:
                     (BuildContext context, int counterValue, Widget? child) {
                   return Text(
